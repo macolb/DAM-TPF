@@ -13,4 +13,23 @@
       <ion-title size="large">dispositivos</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-list>
+    <ion-item *ngFor="let dispositivo of this.listaDispositivos">
+      <ion-label>{{dispositivo.nombre}}</ion-label>
+      <ion-label>{{dispositivo.ubicacion}}</ion-label>
+      <ion-label>{{dispositivo.electrovalvulaId}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+
+  <div id="container1">
+    <ion-button routerLink="/nodo/1">Ir a Nodo N°1</ion-button>
+  </div>
+
+  <div id="container2">
+    <ion-button routerLink="/nodo/2">Ir a Nodo N°2</ion-button>
+  </div>    
+
 </ion-content>
+

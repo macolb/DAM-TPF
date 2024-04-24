@@ -8,13 +8,18 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'dispositivos',
     pathMatch: 'full'
   },
   {
     path: 'dispositivos',
     loadChildren: () => import('./dispositivos/dispositivos.module').then( m => m.DispositivosPageModule)
   },
+  {
+    path: 'nodo',
+    loadChildren: () => import('./nodo/nodo.module').then( m => m.NodoPageModule)
+  },
+
 ];
 
 @NgModule({
