@@ -7,11 +7,14 @@ const cors = require('cors');
 var express = require('express');
 var app = express();
 var pool = require('./mysql-connector');
-const routerDispositivo = require('./routes/dispositivos')
+
+const routerDispositivo = require('./routes/dispositivos');
+const routerMediciones = require('./routes/mediciones');
+const routerRiego = require('./routes/riego');
 
 
 const corsOptions = {
-    origin: '*',
+    origin: '*',        // En caso de que se quiera restringir el acceso a la API
 }
 
 var myLogger = function (req, res, next) {
@@ -34,30 +37,25 @@ app.use(express.static('/home/node/app/static/'));
 app.use(cors(corsOptions))
 app.use(myLogger)
 
+//=======[ Routes ]============================================================
+
 app.use('/dispositivo', routerDispositivo)
+app.use('/mediciones', routerMediciones)
+app.use('/riego', routerRiego)
 
 //=======[ Main module code ]==================================================
 
-// var cb0 = function (req, res, next) {
-//     // Hago saneamiento de la request
-//     // y luego paso al siguiente callback
-//     // si se cumple cierta condición
-//     console.log('CB0')
-//     next()
-// }
 
-// var cb1 = function (req, res, next) {
-//     console.log('CB1')
-//     next()
-// }
-
-
-var cb2 = function (req, res, next) {
-    res.send({'mensaje': 'Hola DAM!'}).status(200)
+var checkdata = function (req, res, next) {
+    console.log('Inicializacion correcta')
+    next()
 }
 
-// app.get('/', [cb0, cb1, cb2]);
-app.get('/', cb2);
+var senddata = function (req, res, next) {
+    res.send({'mensaje': 'Tamo activo!'}).status(200)
+}
+
+app.get('/', [checkdata,senddata]);
 
 app.listen(PORT, function(req, res) {
     console.log("NodeJS API running correctly");
