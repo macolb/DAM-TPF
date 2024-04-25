@@ -2,9 +2,6 @@
   <ion-toolbar>
     <ion-title>Dispositivos</ion-title>
   </ion-toolbar>
-  <ion-button (click)="CrearDisp()">Crear Dispositivo</ion-button>
-  <br>
-  <ion-button (click)="DeleteDisp()">Eliminar Dispositivo</ion-button>
 </ion-header>
 
 <ion-content color="light">
@@ -21,7 +18,11 @@
       <ion-label>{{dispositivo.electrovalvulaId}}</ion-label>
       <ion-button [routerLink]="'/nodo/' + dispositivo.dispositivoId">Ir a Nodo N°{{ dispositivo.dispositivoId }}</ion-button>
     </ion-item>
-  </ion-list>    
+  </ion-list> 
+  
+  <ion-button (click)="CrearDisp()">Crear Dispositivo</ion-button>
+  
+  <ion-button (click)="DeleteDisp()">Eliminar Dispositivo</ion-button>  
 
 </ion-content>
 

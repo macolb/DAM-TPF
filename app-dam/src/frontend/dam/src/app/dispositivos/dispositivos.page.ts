@@ -43,12 +43,13 @@ export class DispositivosPage implements OnInit, OnDestroy {
 
   CrearDisp () {
     //this.subscription = this.observable$.subscribe((value) => {
-    //console.log(value)
+    console.log('Crear un Dispositivo Nuevo')
     //})
   }
 
   DeleteDisp () {
     //this.subscription.unsubscribe()
+    console.log('Eliminar un Dispositivo')    
   }
 
   ngOnDestroy(): void {
