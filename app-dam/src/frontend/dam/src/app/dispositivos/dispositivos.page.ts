@@ -41,13 +41,13 @@ export class DispositivosPage implements OnInit, OnDestroy {
   //  console.log(`Coords: ${evt.clientX} X ${evt.clientY} Y`)
   //})
 
-  subscribe () {
+  CrearDisp () {
     //this.subscription = this.observable$.subscribe((value) => {
     //console.log(value)
     //})
   }
 
-  unsubscribe () {
+  DeleteDisp () {
     //this.subscription.unsubscribe()
   }
 
