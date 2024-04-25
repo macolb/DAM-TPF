@@ -15,4 +15,16 @@ routerRiego.get('/:id', function (req, res) {
     });
 })
 
+routerRiego.put('/', function (req, res) {
+    console.log('PUT /riego');
+    let electrovalvulaId = req.body.electrovalvulaId; // get electrovalvulaId from the request body    
+    pool.query('INSERT INTO Log_Riegos (apertura, fecha, electrovalvulaId) VALUES (1, NOW() , ?)', [electrovalvulaId], function(err, result, fields) {
+        if (err) {
+            res.send(err).status(400);
+            return;
+        }
+        res.send(result);
+    });
+})
+
 module.exports = routerRiego

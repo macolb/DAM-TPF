@@ -17,4 +17,10 @@ export class RiegoService {
     console.log(`${dispositivoId}`)
     return firstValueFrom(this._http.get(`http://localhost:8000/riego/${dispositivoId}`))
   }    
+
+  putRiegoById(electrovalvulaId: number): Promise<any> {
+    console.log(`${electrovalvulaId}`)
+    return firstValueFrom(this._http.put('http://localhost:8000/riego', { electrovalvulaId }) )
+  } 
+
 }

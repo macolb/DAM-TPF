@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { RiegoService } from '../services/riego.service';
 
 import * as Highcharts from 'highcharts';
 declare var require: any;
@@ -21,7 +22,10 @@ export class NodoPage implements OnInit, OnDestroy {
 
   numeroNodo: any
 
-  constructor(private _actRouter: ActivatedRoute) {
+
+
+  
+  constructor(private _riegoService: RiegoService, private _actRouter: ActivatedRoute) {
 
     setTimeout(()=>{
       console.log("Cambio el valor del sensor");
@@ -40,6 +44,8 @@ export class NodoPage implements OnInit, OnDestroy {
 
   ngOnInit() {
   }
+  
+  
 
   ionViewWillEnter () {
     console.log(`Me llegó el id: ${Number(this._actRouter.snapshot.paramMap.get('id'))}`)
@@ -126,6 +132,28 @@ export class NodoPage implements OnInit, OnDestroy {
   ChangeState(){
     this.valveState = !this.valveState;
     console.log(this.valveState);
-  }  
+
+    if(this.valveState){
+      console.log("Abriendo valvula");
+      this.InsertLogRiego()      
+    } else{
+    console.log("Cerrando valvula");
+
+    }
+  } 
+  
+  InsertLogRiego(){
+    console.log("Insertando log de riego");
+    this._riegoService.putRiegoById(this.numeroNodo)
+  .then((response) => {
+    console.log(response);
+  }) 
+  .catch((error) => {
+    console.log(error)
+  })
+
+  }
+
+
 
 }
