@@ -3,9 +3,10 @@ const pool = require('../../mysql-connector')
 
 const routerMediciones = express.Router()
 
-routerMediciones.get('/', function (req, res) {
+routerMediciones.get('/:id', function (req, res) {
     console.log('GET /mediciones');
-    pool.query('Select * from Mediciones', function(err, result, fields) {
+    let id = req.params.id; // Aquí obtenemos el id de los parámetros de la ruta
+    pool.query('Select * from Mediciones WHERE dispositivoId = ?', [id] , function(err, result, fields) {
         if (err) {
             res.send(err).status(400);
             return;
@@ -15,3 +16,4 @@ routerMediciones.get('/', function (req, res) {
 })
 
 module.exports = routerMediciones
+

@@ -16,7 +16,12 @@ export class MedicionesPage implements OnInit, OnDestroy {
   constructor(private _medicionesService: MedicionesService, private _actRouter: ActivatedRoute) { }
 
   async ngOnInit() {
-    await this._medicionesService.getMediciones()
+
+    this.numeroNodo = Number(this._actRouter.snapshot.paramMap.get('id'))  
+
+    //console.log(`Estoy usando this.numeroNodo: ${this.numeroNodo}`)
+    
+    await this._medicionesService.getMedicionesById(this.numeroNodo)
       .then((mediciones) => {
         this.listaMediciones = mediciones
         console.log(mediciones)
@@ -24,12 +29,11 @@ export class MedicionesPage implements OnInit, OnDestroy {
       .catch((error) => {
         console.log(error)
       })
-    //console.log('Me ejecuto primero')
+    console.log('Me ejecuto primero')
   }
 
   ionViewWillEnter () {
-    console.log(`Me llegó el id: ${Number(this._actRouter.snapshot.paramMap.get('id'))}`)
-    this.numeroNodo = Number(this._actRouter.snapshot.paramMap.get('id'))   
+    console.log(`Me llegó el id: ${Number(this._actRouter.snapshot.paramMap.get('id'))}`) 
   }   
 
   ngOnDestroy(): void {
