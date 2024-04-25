@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { MedicionesService } from '../services/mediciones.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-mediciones',
@@ -10,8 +11,9 @@ import { MedicionesService } from '../services/mediciones.service';
 export class MedicionesPage implements OnInit, OnDestroy {
 
   listaMediciones: any[] = []
+  numeroNodo: any
 
-  constructor(private _medicionesService: MedicionesService) { }
+  constructor(private _medicionesService: MedicionesService, private _actRouter: ActivatedRoute) { }
 
   async ngOnInit() {
     await this._medicionesService.getMediciones()
@@ -24,6 +26,11 @@ export class MedicionesPage implements OnInit, OnDestroy {
       })
     //console.log('Me ejecuto primero')
   }
+
+  ionViewWillEnter () {
+    console.log(`Me llegó el id: ${Number(this._actRouter.snapshot.paramMap.get('id'))}`)
+    this.numeroNodo = Number(this._actRouter.snapshot.paramMap.get('id'))   
+  }   
 
   ngOnDestroy(): void {
   }

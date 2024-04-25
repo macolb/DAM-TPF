@@ -14,4 +14,19 @@ routerDispositivo.get('/', function (req, res) {
     });
 })
 
+routerDispositivo.put('/', function (req, res) {
+    console.log('PUT /dispositivo');    
+    pool.query('INSERT INTO Dispositivos (nombre, ubicacion, electrovalvulaId) VALUES (Sensorito, Pared, 8)', function(err, result, fields) {
+        if (err) {
+            res.send(err).status(400);
+            return;
+        }
+        res.send(result);
+    });
+})
+
+
+
+
+
 module.exports = routerDispositivo

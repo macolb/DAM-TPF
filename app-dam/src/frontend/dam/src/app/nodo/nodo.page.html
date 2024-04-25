@@ -14,11 +14,16 @@
 <ion-card>
   <div id="highcharts" style="width:40%; height:300px; margin: 0 auto;" ></div>
   <br>
-  <ion-button shape="round">Abrir Electrovalvula</ion-button>
+  
+  <ion-button shape="round" (click)="ChangeState()" [ngClass]="{'green-button': !valveState, 'red-button': valveState}">
+    <ng-container *ngIf="!valveState">ABRIR</ng-container>
+    <ng-container *ngIf="valveState">CERRAR</ng-container>      
+  </ion-button>
   <br>
-  <ion-button shape="round">Ver todas las mediciones</ion-button>
+  <ion-button shape="round" [routerLink]="'/mediciones/' + this.numeroNodo">Ver Mediciones</ion-button>
   <br>
-  <ion-button shape="round">Ver Logs Riego</ion-button>
-  </ion-card>
+  <ion-button shape="round" [routerLink]="'/riego/' + this.numeroNodo">Ver Logs de Riego</ion-button>  
+
+</ion-card>
 
 </ion-content>

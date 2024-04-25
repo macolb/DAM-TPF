@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: MedicionesPage
-  }
+  },
+  {
+    path: ':id', // /riego/id
+    component: MedicionesPage
+  }      
 ];
 
 @NgModule({

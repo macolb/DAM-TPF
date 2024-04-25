@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { RiegoService } from '../services/riego.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-riego',
@@ -10,8 +11,9 @@ import { RiegoService } from '../services/riego.service';
 export class RiegoPage implements OnInit, OnDestroy {
 
   listaRiego: any[] = []
+  numeroNodo: any  
 
-  constructor(private _riegoService: RiegoService) { }
+  constructor(private _riegoService: RiegoService, private _actRouter: ActivatedRoute) { }
 
   async ngOnInit() {
     await this._riegoService.getRiego()
@@ -24,6 +26,11 @@ export class RiegoPage implements OnInit, OnDestroy {
       })
     //console.log('Me ejecuto primero')
   }
+
+  ionViewWillEnter () {
+    console.log(`Me llegó el id: ${Number(this._actRouter.snapshot.paramMap.get('id'))}`)
+    this.numeroNodo = Number(this._actRouter.snapshot.paramMap.get('id'))    
+  }   
 
   ngOnDestroy(): void {
   }

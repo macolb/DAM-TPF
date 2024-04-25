@@ -17,6 +17,7 @@ export class NodoPage implements OnInit, OnDestroy {
   private valorObtenido:number=0;
   public myChart: any;
   private chartOptions: any;
+  valveState: boolean = false;
 
   numeroNodo: any
 
@@ -120,6 +121,11 @@ export class NodoPage implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
 
+  }  
+
+  ChangeState(){
+    this.valveState = !this.valveState;
+    console.log(this.valveState);
   }  
 
 }
