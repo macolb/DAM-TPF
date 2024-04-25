@@ -16,7 +16,12 @@ export class RiegoPage implements OnInit, OnDestroy {
   constructor(private _riegoService: RiegoService, private _actRouter: ActivatedRoute) { }
 
   async ngOnInit() {
-    await this._riegoService.getRiego()
+
+    this.numeroNodo = Number(this._actRouter.snapshot.paramMap.get('id'))  
+
+    //console.log(`Estoy usando this.numeroNodo: ${this.numeroNodo}`)
+
+    await this._riegoService.getRiegoById(this.numeroNodo)
       .then((riego) => {
         this.listaRiego = riego
         console.log(riego)

@@ -10,4 +10,13 @@
       <ion-title size="large">riego</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-list [inset]="true">
+    <ion-item *ngFor="let riego of this.listaRiego">
+      <ion-label>{{riego.LogRiegoId}}</ion-label>
+      <ion-label>{{riego.apertura}}</ion-label>
+      <ion-label>{{riego.fecha}}</ion-label>
+    </ion-item>
+  </ion-list> 
+
 </ion-content>

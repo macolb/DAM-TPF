@@ -10,4 +10,13 @@
       <ion-title size="large">mediciones</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-list [inset]="true">
+    <ion-item *ngFor="let mediciones of this.listaMediciones">
+      <ion-label>{{mediciones.medicionId}}</ion-label>
+      <ion-label>{{mediciones.fecha}}</ion-label>
+      <ion-label>{{mediciones.valor}}</ion-label>
+    </ion-item>
+  </ion-list> 
+
 </ion-content>

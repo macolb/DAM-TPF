@@ -10,6 +10,11 @@ export class RiegoService {
   constructor(private _http: HttpClient) { }
 
   getRiego (): Promise<any> {
-    return firstValueFrom(this._http.get('http://localhost:8000/riegos'))
+    return firstValueFrom(this._http.get('http://localhost:8000/riego'))
   }
+
+  getRiegoById(dispositivoId: number): Promise<any> {
+    console.log(`${dispositivoId}`)
+    return firstValueFrom(this._http.get(`http://localhost:8000/riego/${dispositivoId}`))
+  }    
 }
