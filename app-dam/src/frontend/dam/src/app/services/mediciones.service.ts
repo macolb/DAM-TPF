@@ -16,5 +16,11 @@ export class MedicionesService {
   getMedicionesById(dispositivoId: number): Promise<any> {
     console.log(`${dispositivoId}`)
     return firstValueFrom(this._http.get(`http://localhost:8000/mediciones/${dispositivoId}`))
-  }  
+  } 
+  
+  putMedicionById(electrovalvulaId: number, valorSens: number): Promise<any> {
+    console.log(`Nueva medicion de id:${electrovalvulaId}`)
+    return firstValueFrom(this._http.put('http://localhost:8000/mediciones', { electrovalvulaId, valorSens }) )
+  }   
+
 }

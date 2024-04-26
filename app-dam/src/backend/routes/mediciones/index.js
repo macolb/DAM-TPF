@@ -15,5 +15,20 @@ routerMediciones.get('/:id', function (req, res) {
     });
 })
 
+routerMediciones.put('/', function (req, res) {
+
+    console.log('PUT /mediciones');
+    let electrovalvulaId = req.body.electrovalvulaId; // get electrovalvulaId from the request body    
+    let valor = req.body.valorSens; // get estado from the request body
+
+    pool.query('INSERT INTO Mediciones (fecha, valor, dispositivoId) VALUES (NOW(), ? , ?)', [valor, electrovalvulaId], function(err, result, fields) {
+        if (err) {
+            res.send(err).status(400);
+            return;
+        }
+        res.send(result);
+    });
+})
+
 module.exports = routerMediciones
 

@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RiegoService } from '../services/riego.service';
+import { MedicionesService } from '../services/mediciones.service';
 
 import * as Highcharts from 'highcharts';
 declare var require: any;
@@ -20,8 +21,10 @@ export class NodoPage implements OnInit, OnDestroy {
   valveState: boolean = false;
 
   numeroNodo: any
+  stateValve: any
+  valormedicion: any
 
-  constructor(private _riegoService: RiegoService, private _actRouter: ActivatedRoute) {
+  constructor(private _medicionesService: MedicionesService, private _riegoService: RiegoService, private _actRouter: ActivatedRoute) {
 
     setTimeout(()=>{
       console.log("Cambio el valor del sensor");
@@ -127,28 +130,45 @@ export class NodoPage implements OnInit, OnDestroy {
 
   ChangeState(){
     this.valveState = !this.valveState;
-    console.log(this.valveState);
+    this.stateValve = this.valveState ? 1 : 0;
+
+    this.valormedicion = Math.floor(Math.random() * (100 - 0));
+    //console.log(this.valveState);
+
+    this.InsertLogRiego()   //Log de Valvula    
 
     if(this.valveState){
-      console.log("Abriendo valvula");
-      this.InsertLogRiego()      
+      console.log("Abriendo valvula");     
     } else{
-    console.log("Cerrando valvula");
+      console.log("Cerrando valvula");
 
+      console.log("Insertando Medicion");
+      this.InsertMedicion(); //Log de Medicion  
     }
+
+
   } 
   
   InsertLogRiego(){
-    this._riegoService.putRiegoById(this.numeroNodo)
+    this._riegoService.putRiegoById(this.numeroNodo, this.stateValve)
   .then((response) => {
     console.log("Insert Riego Log");
   }) 
   .catch((error) => {
     console.log(error)
   })
-
   }
 
+  InsertMedicion(){
+    this._medicionesService.putMedicionById(this.numeroNodo, this.valormedicion)
+  .then((response) => {
+    console.log("Insert Medicion");
+  }) 
+  .catch((error) => {
+    console.log(error)
+  })
+
+  }
 
 
 }

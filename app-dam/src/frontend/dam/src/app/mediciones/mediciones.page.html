@@ -15,7 +15,7 @@
     <ion-item *ngFor="let mediciones of this.listaMediciones">
       <ion-label>{{mediciones.medicionId}}</ion-label>
       <ion-label>{{mediciones.fecha}}</ion-label>
-      <ion-label>{{mediciones.valor}}</ion-label>
+      <ion-label appColorear>{{ mediciones.valor | modData:'KPA' }}</ion-label>
     </ion-item>
   </ion-list> 
 

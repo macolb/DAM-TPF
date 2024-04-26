@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { MedicionesPageRoutingModule } from './mediciones-routing.module';
 
 import { MedicionesPage } from './mediciones.page';
+import { ModDataPipe } from '../pipes/mod-data.pipe';
+import { ColorearDirective } from '../directives/colorear.directive';
 
 @NgModule({
   imports: [
@@ -15,6 +17,6 @@ import { MedicionesPage } from './mediciones.page';
     IonicModule,
     MedicionesPageRoutingModule
   ],
-  declarations: [MedicionesPage]
+  declarations: [MedicionesPage, ModDataPipe, ColorearDirective]
 })
 export class MedicionesPageModule {}
