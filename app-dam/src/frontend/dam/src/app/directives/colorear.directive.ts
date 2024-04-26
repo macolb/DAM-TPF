@@ -9,7 +9,7 @@ export class ColorearDirective {
 
   @HostListener('mouseenter') 
   onMouseEnter(){
-    this.colorear('blue');
+    this.colorear('green');
   }
 
   @HostListener('mouseleave') 

@@ -1,7 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Dispositivos!</ion-title>
+   <!-- <ion-title>Dispositivos</ion-title>-->  
+
+    <ion-button (click)="CrearDisp()">Crear Dispositivo</ion-button>
+  
+    <ion-button (click)="DeleteDisp()">Eliminar Dispositivo</ion-button>  
+
   </ion-toolbar>
+  
 </ion-header>
 
 <ion-content color="light">
@@ -10,19 +16,32 @@
       <ion-title size="large">Dispositivos</ion-title>
     </ion-toolbar>
   </ion-header>
-
+<!-- 
   <ion-list [inset]="true">
     <ion-item *ngFor="let dispositivo of this.listaDispositivos">
       <ion-label>{{dispositivo.nombre}}</ion-label>
       <ion-label>{{dispositivo.ubicacion}}</ion-label>
       <ion-label>{{dispositivo.electrovalvulaId}}</ion-label>
-      <ion-button [routerLink]="'/nodo/' + dispositivo.dispositivoId">Ir a Nodo N°{{ dispositivo.dispositivoId }}</ion-button>
+      <ion-button [routerLink]="'/nodo/' + dispositivo.dispositivoId">Ver Detalles Disp N°{{ dispositivo.dispositivoId }}</ion-button>
     </ion-item>
   </ion-list> 
+-->  
+
+  <ion-card  *ngFor="let dispositivo of this.listaDispositivos">
+    <ion-card-header>
+      <ion-card-title>{{dispositivo.nombre}}</ion-card-title>
+      <ion-card-subtitle>{{dispositivo.ubicacion}}</ion-card-subtitle>
+    </ion-card-header>
   
-  <ion-button (click)="CrearDisp()">Crear Dispositivo</ion-button>
+    <ion-card-content>
+      Electrovalvula N° {{dispositivo.electrovalvulaId}}
+    </ion-card-content>
   
-  <ion-button (click)="DeleteDisp()">Eliminar Dispositivo</ion-button>  
+    <ion-button fill="clear" [routerLink]="'/nodo/' + dispositivo.dispositivoId">Detalles Disp N°{{ dispositivo.dispositivoId }}</ion-button>
+
+<!--<ion-button fill="clear">Action 1</ion-button>
+    <ion-button fill="clear">Action 2</ion-button>--> 
+  </ion-card>  
 
 </ion-content>
 

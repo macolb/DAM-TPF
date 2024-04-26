@@ -15,6 +15,18 @@ routerMediciones.get('/:id', function (req, res) {
     });
 })
 
+routerMediciones.get('/:id', function (req, res) {
+    console.log('GET /mediciones');
+    let id = req.params.id; // Aquí obtenemos el id de los parámetros de la ruta
+    pool.query('Select * from Mediciones WHERE dispositivoId = ?', [id] , function(err, result, fields) {
+        if (err) {
+            res.send(err).status(400);
+            return;
+        }
+        res.send(result);
+    });
+})
+
 routerMediciones.put('/', function (req, res) {
 
     console.log('PUT /mediciones');

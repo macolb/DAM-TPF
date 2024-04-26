@@ -1,22 +1,29 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>mediciones</ion-title>
+    <ion-title>Mediciones de N° {{ this.numeroNodo }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content color="light">
+
+<!-- 
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">mediciones</ion-title>
+      <ion-title size="large">Registro de mediciones</ion-title>
     </ion-toolbar>
   </ion-header>
+-->
 
   <ion-list [inset]="true">
     <ion-item *ngFor="let mediciones of this.listaMediciones">
-      <ion-label>{{mediciones.medicionId}}</ion-label>
       <ion-label>{{mediciones.fecha}}</ion-label>
+      <ion-label>{{mediciones.medicionId}}</ion-label>      
       <ion-label appColorear>{{ mediciones.valor | modData:'KPA' }}</ion-label>
     </ion-item>
   </ion-list> 
 
+  <ion-button>Cambiar Unidad</ion-button>
+
 </ion-content>
+
+

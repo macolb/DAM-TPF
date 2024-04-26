@@ -7,3 +7,22 @@
     --background: red;
     --color: white; /* Text color */
   }
+
+  ion-card {
+    width: 50%; // ajusta el ancho de la tarjeta
+    //height: 400px; // ajusta la altura de la tarjeta
+    margin: 0 auto; // centra la tarjeta horizontalmente
+    background-color: #FFF;
+  }
+
+  .centered-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .uniform-button {
+    width: 200px;  /* Cambia esto al ancho que prefieras */
+    height: 35px;  /* Cambia esto a la altura que prefieras */
+  }

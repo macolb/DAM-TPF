@@ -28,7 +28,7 @@ export class NodoPage implements OnInit, OnDestroy {
 
     setTimeout(()=>{
       console.log("Cambio el valor del sensor");
-      this.valorObtenido=60;
+      this.valorObtenido=22;
       //llamo al update del chart para refrescar y mostrar el nuevo valor
       this.myChart.update({series: [{
           name: 'kPA',
@@ -37,7 +37,7 @@ export class NodoPage implements OnInit, OnDestroy {
               valueSuffix: ' kPA'
           }
       }]});
-    },6000);
+    },3000);
 
    }
 

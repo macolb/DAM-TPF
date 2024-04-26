@@ -11,19 +11,16 @@
     </ion-toolbar>
   </ion-header>
 
-<ion-card>
-  <div id="highcharts" style="width:40%; height:300px; margin: 0 auto;" ></div>
-  <br>
+<ion-card class="centered-buttons"> 
+  <div id="highcharts" style="width:95%; height:300px; margin: 0 auto;" ></div>
   
-  <ion-button shape="round" (click)="ChangeState()" [ngClass]="{'green-button': !valveState, 'red-button': valveState}">
+  <ion-button class="uniform-button" shape="round" (click)="ChangeState()" [ngClass]="{'green-button': !valveState, 'red-button': valveState}">
     <ng-container *ngIf="!valveState">ABRIR</ng-container>
     <ng-container *ngIf="valveState">CERRAR</ng-container>      
   </ion-button>
-  <br>
-  <ion-button shape="round" [routerLink]="'/mediciones/' + this.numeroNodo">Ver Mediciones</ion-button>
-  <br>
-  <ion-button shape="round" [routerLink]="'/riego/' + this.numeroNodo">Ver Logs de Riego</ion-button>  
+  <ion-button class="uniform-button" shape="round" [routerLink]="'/mediciones/' + this.numeroNodo">Ver Mediciones</ion-button>
+  <ion-button class="uniform-button" shape="round" [routerLink]="'/riego/' + this.numeroNodo">Ver Logs de Riego</ion-button>  
 
-</ion-card>
+</ion-card> 
 
 </ion-content>
