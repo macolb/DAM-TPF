@@ -14,7 +14,6 @@ require('highcharts/modules/solid-gauge')(Highcharts);
 })
 export class NodoPage implements OnInit, OnDestroy {
 
-
   private valorObtenido:number=0;
   public myChart: any;
   private chartOptions: any;
@@ -22,9 +21,6 @@ export class NodoPage implements OnInit, OnDestroy {
 
   numeroNodo: any
 
-
-
-  
   constructor(private _riegoService: RiegoService, private _actRouter: ActivatedRoute) {
 
     setTimeout(()=>{
@@ -143,10 +139,9 @@ export class NodoPage implements OnInit, OnDestroy {
   } 
   
   InsertLogRiego(){
-    console.log("Insertando log de riego");
     this._riegoService.putRiegoById(this.numeroNodo)
   .then((response) => {
-    console.log(response);
+    console.log("Insert Riego Log");
   }) 
   .catch((error) => {
     console.log(error)
