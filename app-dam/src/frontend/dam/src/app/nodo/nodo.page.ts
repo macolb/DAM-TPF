@@ -22,6 +22,9 @@ export class NodoPage implements OnInit, OnDestroy {
 
   numeroNodo: any
   stateValve: any
+  ultimaMedicion: any
+  ultimoEstado: any
+
   valormedicion: any
 
   constructor(private _medicionesService: MedicionesService, private _riegoService: RiegoService, private _actRouter: ActivatedRoute) {
@@ -41,9 +44,39 @@ export class NodoPage implements OnInit, OnDestroy {
 
    }
 
-  ngOnInit() {
-  }
-  
+   ngOnInit() {
+    console.log('Consigo la medicion del Dispositivo')
+    console.log('Consigo el estado de valvula del Dispositivo')
+
+   }
+
+   //async ngOnInit() {
+
+    // console.log('Consigo la medicion del Dispositivo')
+    
+     // await this._medicionesService.getUltimaMedicionById(this.numeroNodo)
+      //.then((medicion) => {
+      //  this.ultimaMedicion = medicion
+      //  console.log(medicion)
+      //})
+      //.catch((error) => {
+      //  console.log(error)
+      //})
+
+    //  console.log('Consigo el estado de valvula del Dispositivo')
+
+      //await this._riegoService.getUltimoEstadoById(this.numeroNodo)
+      //.then((estado) => {
+      //  this.ultimoEstado = estado
+      //  console.log(estado)
+      //})
+      //.catch((error) => {
+      //  console.log(error)
+      //})
+
+      
+
+  //}
   
 
   ionViewWillEnter () {

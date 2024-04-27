@@ -14,13 +14,19 @@
   </ion-header>
 -->
 
-  <ion-list [inset]="true">
+  <ion-list class="list-container" [inset]="true"> 
+    <ion-list-header>
+      <ion-label>MEDICION</ion-label>
+      <ion-label>FECHA</ion-label>
+      <ion-label>VALOR</ion-label>
+    </ion-list-header>     
     <ion-item *ngFor="let mediciones of this.listaMediciones">
-      <ion-label>{{mediciones.fecha}}</ion-label>
-      <ion-label>{{mediciones.medicionId}}</ion-label>      
+      <ion-label>{{mediciones.medicionId}}</ion-label>  
+      <ion-label>{{mediciones.fecha }}</ion-label>    
       <ion-label appColorear>{{ mediciones.valor | modData:'KPA' }}</ion-label>
     </ion-item>
-  </ion-list> 
+  </ion-list>
+
 
   <ion-button>Cambiar Unidad</ion-button>
 

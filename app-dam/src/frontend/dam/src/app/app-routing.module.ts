@@ -18,7 +18,8 @@ const routes: Routes = [
   {
     path: 'nodo',
     loadChildren: () => import('./nodo/nodo.module').then( m => m.NodoPageModule)
-  },  {
+  },
+  {
     path: 'riego',
     loadChildren: () => import('./riego/riego.module').then( m => m.RiegoPageModule)
   },

@@ -15,6 +15,20 @@ routerRiego.get('/:id', function (req, res) {
     });
 })
 
+routerRiego.get('/', function (req, res) {
+
+    console.log('GET /ultimo estado riego');
+    let dispositivoId = req.body.electrovalvulaId; // get electrovalvulaId from the request body   
+
+    pool.query('Select * from Log_Riegos WHERE electrovalvulaId = ?', [dispositivoId], function(err, result, fields) {
+        if (err) {
+            res.send(err).status(400);
+            return;
+        }
+        res.send(result);
+    });
+})
+
 routerRiego.put('/', function (req, res) {
 
     console.log('PUT /riego');

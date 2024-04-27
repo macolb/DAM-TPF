@@ -10,6 +10,8 @@ import { MedicionesPage } from './mediciones.page';
 import { ModDataPipe } from '../pipes/mod-data.pipe';
 import { ColorearDirective } from '../directives/colorear.directive';
 
+import { EditDatePipe } from '../pipes/edit-date.pipe';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -17,6 +19,6 @@ import { ColorearDirective } from '../directives/colorear.directive';
     IonicModule,
     MedicionesPageRoutingModule
   ],
-  declarations: [MedicionesPage, ModDataPipe, ColorearDirective]
+  declarations: [MedicionesPage, ModDataPipe, EditDatePipe, ColorearDirective]
 })
 export class MedicionesPageModule {}
