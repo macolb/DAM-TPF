@@ -17,10 +17,10 @@ routerMediciones.get('/:id', function (req, res) {
 
 routerMediciones.get('/', function (req, res) {
 
-    console.log('GET /ultima mediciones');
-    let dispositivoId = req.body.electrovalvulaId; // get electrovalvulaId from the request body   
+    let dispositivoId = req.query.dispositivoId; // get electrovalvulaId from the request body   
+    console.log(`GET /ultima mediciones de ${dispositivoId}`);
 
-    pool.query('Select * from Mediciones WHERE electrovalvulaId = ?', [dispositivoId], function(err, result, fields) {
+    pool.query('SELECT valor FROM Mediciones WHERE dispositivoId = ? ORDER BY fecha DESC LIMIT 1', [dispositivoId], function(err, result, fields) {
         if (err) {
             res.send(err).status(400);
             return;
@@ -31,11 +31,11 @@ routerMediciones.get('/', function (req, res) {
 
 routerMediciones.put('/', function (req, res) {
 
-    console.log('PUT /mediciones');
-    let electrovalvulaId = req.body.electrovalvulaId; // get electrovalvulaId from the request body    
+    let dispositivoId = req.body.dispositivoId; // get electrovalvulaId from the request body    
     let valor = req.body.valorSens; // get estado from the request body
+    console.log(`PUT /ultima medicion de ${dispositivoId} de ${valor}`);
 
-    pool.query('INSERT INTO Mediciones (fecha, valor, dispositivoId) VALUES (NOW(), ? , ?)', [valor, electrovalvulaId], function(err, result, fields) {
+    pool.query('INSERT INTO Mediciones (fecha, valor, dispositivoId) VALUES (NOW(), ? , ?)', [valor, dispositivoId], function(err, result, fields) {
         if (err) {
             res.send(err).status(400);
             return;

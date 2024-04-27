@@ -17,10 +17,11 @@ routerRiego.get('/:id', function (req, res) {
 
 routerRiego.get('/', function (req, res) {
 
-    console.log('GET /ultimo estado riego');
-    let dispositivoId = req.body.electrovalvulaId; // get electrovalvulaId from the request body   
+    let dispositivoId = req.query.dispositivoId; // get electrovalvulaId from the request body   
 
-    pool.query('Select * from Log_Riegos WHERE electrovalvulaId = ?', [dispositivoId], function(err, result, fields) {
+    console.log(`GET /ultimo estado de ${dispositivoId}`);    
+
+    pool.query('SELECT estado FROM Log_Riegos WHERE electrovalvulaId = ? ORDER BY fecha DESC LIMIT 1', [dispositivoId], function(err, result, fields) {
         if (err) {
             res.send(err).status(400);
             return;
@@ -31,11 +32,12 @@ routerRiego.get('/', function (req, res) {
 
 routerRiego.put('/', function (req, res) {
 
-    console.log('PUT /riego');
-    let electrovalvulaId = req.body.electrovalvulaId; // get electrovalvulaId from the request body    
+    let dispositivoId = req.body.dispositivoId; // get electrovalvulaId from the request body    
     let estado = req.body.stateValve; // get estado from the request body
+    console.log(`PUT /ultimo estado de ${dispositivoId} en ${estado}`);
 
-    pool.query('INSERT INTO Log_Riegos (estado, fecha, electrovalvulaId) VALUES (?, NOW() , ?)', [estado, electrovalvulaId], function(err, result, fields) {
+
+    pool.query('INSERT INTO Log_Riegos (estado, fecha, electrovalvulaId) VALUES (?, NOW() , ?)', [estado, dispositivoId], function(err, result, fields) {
         if (err) {
             res.send(err).status(400);
             return;

@@ -23,7 +23,7 @@ export class MedicionesPage implements OnInit, OnDestroy {
     
     await this._medicionesService.getMedicionesById(this.numeroNodo)
       .then((mediciones) => {
-        this.listaMediciones = mediciones
+        this.listaMediciones = mediciones.reverse();
         console.log(mediciones)
       })
       .catch((error) => {

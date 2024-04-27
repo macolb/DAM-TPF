@@ -23,9 +23,10 @@ export class RiegoService {
     return firstValueFrom(this._http.get('http://localhost:8000/riego', { params: { dispositivoId: dispositivoId.toString() } }))
   }     
 
-  putRiegoById(electrovalvulaId: number, stateValve:number): Promise<any> {
-    console.log(`${electrovalvulaId}`)
-    return firstValueFrom(this._http.put('http://localhost:8000/riego', { electrovalvulaId, stateValve }) )
+  putRiegoById(dispositivoId: number, stateValve:boolean): Promise<any> {
+    console.log(`Nuevo estado de riego de ${dispositivoId}`)
+    return firstValueFrom(this._http.put('http://localhost:8000/riego', { dispositivoId, stateValve }) )
   } 
+  
 
 }

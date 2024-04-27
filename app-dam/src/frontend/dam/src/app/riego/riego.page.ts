@@ -23,7 +23,7 @@ export class RiegoPage implements OnInit, OnDestroy {
 
     await this._riegoService.getRiegoById(this.numeroNodo)
       .then((riego) => {
-        this.listaRiego = riego
+        this.listaRiego = riego.reverse();
         console.log(riego)
       })
       .catch((error) => {

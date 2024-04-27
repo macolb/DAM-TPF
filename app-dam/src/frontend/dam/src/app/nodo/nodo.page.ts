@@ -18,12 +18,14 @@ export class NodoPage implements OnInit, OnDestroy {
   private valorObtenido:number=0;
   public myChart: any;
   private chartOptions: any;
-  valveState: boolean = false;
+
 
   numeroNodo: any
-  stateValve: any
   ultimaMedicion: any
-  ultimoEstado: any
+
+  //stateValve: any
+  valveState: boolean = false;
+  //ultimoEstado: any
 
   valormedicion: any
 
@@ -44,39 +46,37 @@ export class NodoPage implements OnInit, OnDestroy {
 
    }
 
-   ngOnInit() {
-    console.log('Consigo la medicion del Dispositivo')
-    console.log('Consigo el estado de valvula del Dispositivo')
+   //ngOnInit() {
+    //console.log('Consigo la medicion del Dispositivo')
+    //console.log('Consigo el estado de valvula del Dispositivo')
 
-   }
+   //}
 
-   //async ngOnInit() {
+   async ngOnInit() {
 
-    // console.log('Consigo la medicion del Dispositivo')
+     console.log('Consigo la medicion del Dispositivo')
     
-     // await this._medicionesService.getUltimaMedicionById(this.numeroNodo)
-      //.then((medicion) => {
-      //  this.ultimaMedicion = medicion
-      //  console.log(medicion)
-      //})
-      //.catch((error) => {
-      //  console.log(error)
-      //})
+      await this._medicionesService.getUltimaMedicionById(Number(this._actRouter.snapshot.paramMap.get('id')))
+      .then((medicion) => {
+        this.ultimaMedicion = medicion
+        console.log(medicion)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
 
-    //  console.log('Consigo el estado de valvula del Dispositivo')
+     console.log('Consigo el estado de valvula del Dispositivo')
 
-      //await this._riegoService.getUltimoEstadoById(this.numeroNodo)
-      //.then((estado) => {
-      //  this.ultimoEstado = estado
-      //  console.log(estado)
-      //})
-      //.catch((error) => {
-      //  console.log(error)
-      //})
+      await this._riegoService.getUltimoEstadoById(Number(this._actRouter.snapshot.paramMap.get('id')))
+      .then((estado) => {
+        this.valveState = estado
+        console.log(estado)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
 
-      
-
-  //}
+  }
   
 
   ionViewWillEnter () {
@@ -163,7 +163,7 @@ export class NodoPage implements OnInit, OnDestroy {
 
   ChangeState(){
     this.valveState = !this.valveState;
-    this.stateValve = this.valveState ? 1 : 0;
+    //this.stateValve = this.valveState ? 1 : 0;
 
     this.valormedicion = Math.floor(Math.random() * (100 - 0));
     //console.log(this.valveState);
@@ -183,7 +183,7 @@ export class NodoPage implements OnInit, OnDestroy {
   } 
   
   InsertLogRiego(){
-    this._riegoService.putRiegoById(this.numeroNodo, this.stateValve)
+    this._riegoService.putRiegoById(this.numeroNodo, this.valveState)
   .then((response) => {
     console.log("Insert Riego Log");
   }) 
