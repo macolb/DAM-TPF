@@ -39,9 +39,12 @@ Para usar este repositorio, siga estos pasos:
 
 1. Clone el repositorio: git clone https://github.com/macolb/DAM-TPF.git
 2. Correr los contenedores de la aplicacion 
-3. Ir hasta la carpeta frontend/dam donde se encunetra el archivo docker-compose.yml y correr docker compose up
+   - Ir hasta la carpeta frontend/dam donde se encunetra el archivo docker-compose.yml
+   - Correr docker compose up
 4. Navega hasta la carpeta del repositorio: frontend/dam
 5. Instalar las dependencias que van a estar en node_modules mediante el comando en la terminal npm install
+
+6. El proyecto se escuentra en la rama PROYECTO-TPF
 
 ## Uso
 Una aplicación en ionic que permite:
