@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
   <ion-title>Lista de Dispositivos</ion-title>
-   <!-- 
+<!-- 
     <ion-button (click)="CrearDisp()">Crear Dispositivo</ion-button>
   
     <ion-button (click)="DeleteDisp()">Eliminar Dispositivo</ion-button>  
@@ -12,29 +12,13 @@
 
 <ion-content color="light">
 
-  <!-- 
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Dispositivos</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  -->   
-
 <!-- 
-  <ion-list [inset]="true">
-    <ion-item *ngFor="let dispositivo of this.listaDispositivos">
-      <ion-label>{{dispositivo.nombre}}</ion-label>
-      <ion-label>{{dispositivo.ubicacion}}</ion-label>
-      <ion-label>{{dispositivo.electrovalvulaId}}</ion-label>
-      <ion-button [routerLink]="'/nodo/' + dispositivo.dispositivoId">Ver Detalles Disp N°{{ dispositivo.dispositivoId }}</ion-button>
-    </ion-item>
-  </ion-list> 
--->  
 <ion-card>
 <ion-button (click)="CrearDisp()">Crear Dispositivo</ion-button>
   
 <ion-button (click)="DeleteDisp()">Eliminar Dispositivo</ion-button>
 </ion-card>
+--> 
 
   <ion-card  *ngFor="let dispositivo of this.listaDispositivos">
     <ion-card-header>

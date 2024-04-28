@@ -10,18 +10,9 @@ import { DispositivoService } from '../services/dispositivo.service';
 })
 export class DispositivosPage implements OnInit, OnDestroy {
 
-  //observable$: Observable<any>
-  //subscription: Subscription
   listaDispositivos: any[] = []
 
   constructor(private _dispositivoService: DispositivoService) {
-    //this.observable$ = interval(1000)
-
-    //const valuePlusTen$ = this.observable$.pipe(map((val) => val+10))
-
-    //this.subscription = valuePlusTen$.subscribe((value) => {
-    //  console.log(value)
-    //})
   }
 
   async ngOnInit() {
@@ -33,28 +24,16 @@ export class DispositivosPage implements OnInit, OnDestroy {
       .catch((error) => {
         console.log(error)
       })
-    //console.log('Me ejecuto primero')
   }
 
-  //mouseMove$ = fromEvent(document, 'mousemove')
-
-  //subscriptionMouseMove = this.mouseMove$.subscribe((evt: any) => {
-  //  console.log(`Coords: ${evt.clientX} X ${evt.clientY} Y`)
-  //})
-
   CrearDisp () {
-    //this.subscription = this.observable$.subscribe((value) => {
     console.log('Crear un Dispositivo Nuevo')
-    //})
   }
 
   DeleteDisp () {
-    //this.subscription.unsubscribe()
     console.log('Eliminar un Dispositivo')    
   }
 
   ngOnDestroy(): void {
-    //this.subscription.unsubscribe()
-    //this.subscriptionMouseMove.unsubscribe()
   }
 }
