@@ -70,7 +70,7 @@ Una aplicación en ionic que permite:
 
 ## Imagenes
 
-<img src="https://github.com/macolb/DAM-TPF/assets/9436321/6bc61e2e-18fa-47b0-b0f3-6572a5a11bdd" width="600" align="center">
+<img src="https://github.com/macolb/DAM-TPF/assets/9436321/4cc482f6-4f1b-40f1-833c-e60c912824b7" width="600" align="center">
 
 <img src="https://github.com/macolb/DAM-TPF/assets/9436321/58c155c0-6a7c-446a-8694-610c6cb9f398" width="600" align="center">
 
