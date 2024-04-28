@@ -46,8 +46,8 @@ export class NodoPage implements OnInit, OnDestroy {
       console.log(this.ultimaMedicion);
       this.myChart.update({series: [{
           name: 'kPA',
-          //data: [this.ultimaMedicion],          
-          data: [20],
+          data: [Number(this.ultimaMedicion)],          
+          //data: [20],
           tooltip: {
               valueSuffix: ' kPA'
           }
@@ -175,7 +175,6 @@ export class NodoPage implements OnInit, OnDestroy {
     y cambiar la variable por estado
     */
     this.InsertLogRiego()   //Actualizo el estado de la valvula en la base de datos  
-    this.valormedicion = Math.floor(Math.random() * (100));  
 
     if(this.valveState){
       console.log("Abriendo valvula");     
@@ -183,6 +182,7 @@ export class NodoPage implements OnInit, OnDestroy {
       console.log("Cerrando valvula");
 
       console.log("Insertando Medicion");
+      this.valormedicion = Math.floor(Math.random() * (100));        
       this.InsertMedicion();    //Log de Medicion    
       
       /*
@@ -228,8 +228,8 @@ export class NodoPage implements OnInit, OnDestroy {
       //Actualizo el Widget del Sensor
       this.myChart.update({series: [{
         name: 'kPA',
-        //data: [this.ultimaMedicion],          
-        data: [33],
+        data: [Number(this.ultimaMedicion)],          
+        //data: [33],
         tooltip: {
             valueSuffix: ' kPA'
         }
@@ -249,8 +249,8 @@ export class NodoPage implements OnInit, OnDestroy {
 
       this.myChart.update({series: [{
         name: 'kPA',
-        //data: [this.ultimaMedicion],          
-        data: [80],
+        data: [Number(this.ultimaMedicion)],          
+        //data: [80],
         tooltip: {
             valueSuffix: ' kPA'
         }
