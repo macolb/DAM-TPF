@@ -85,6 +85,8 @@ CREATE TABLE `Log_Riegos` (
   `electrovalvulaId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--ALTER TABLE `Log_Riegos` CHANGE `estado` `estado` BOOLEAN NULL DEFAULT NULL;
+
 -- --------------------------------------------------------
 
 --
