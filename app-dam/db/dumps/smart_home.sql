@@ -80,7 +80,7 @@ INSERT INTO `Electrovalvulas` (`electrovalvulaId`, `nombre`) VALUES
 
 CREATE TABLE `Log_Riegos` (
   `logRiegoId` int(11) NOT NULL,
-  `apertura` tinyint(4) DEFAULT NULL,
+  `estado` boolean DEFAULT NULL,
   `fecha` datetime DEFAULT NULL,
   `electrovalvulaId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
